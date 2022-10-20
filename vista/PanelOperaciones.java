@@ -1,56 +1,78 @@
 package vista;
 
+import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
 
-public class PanelOperaciones extends JPanel {
-    public JButton bAgregar;
-    public JButton bCalcular;
-    public JButton bBorrar;
-    public JButton bSalir;
+public class PanelOperaciones extends JPanel
+{
+    //----------------------
+    // Atributos
+    //----------------------
+    private JButton btAgregarVendedor;
+    private JButton btVenderCarro;
+    private JButton btCalcularSueldo;
+    private JButton btLiquidarNomina;
+    private JButton btSalir;
 
-    public PanelOperaciones() {
-        bAgregar = new JButton("Agregar");
-        bAgregar.setFont(new Font("Arial", Font.PLAIN, 14));
-        bAgregar.setForeground(Color.BLACK);
-        bAgregar.setBackground(Color.WHITE);
-        bAgregar.setBorder(BorderFactory.createRaisedBevelBorder());
-        bAgregar.setBounds(18, 22, 95, 40);
-        bAgregar.setActionCommand("agregarCarro");
+    //----------------------
+    // Metodos
+    //----------------------
 
-        bCalcular = new JButton("Calcular");
-        bCalcular.setFont(new Font("Arial", Font.PLAIN, 14));
-        bCalcular.setForeground(Color.BLACK);
-        bCalcular.setBackground(Color.WHITE);
-        bCalcular.setBorder(BorderFactory.createRaisedBevelBorder());
-        bCalcular.setBounds(118, 22, 95, 40);
-        bCalcular.setActionCommand("calcularSalario");
-
-        bBorrar = new JButton("Borrar");
-        bBorrar.setFont(new Font("Arial", Font.PLAIN, 14));
-        bBorrar.setForeground(Color.BLACK);
-        bBorrar.setBackground(Color.WHITE);
-        bBorrar.setBorder(BorderFactory.createRaisedBevelBorder());
-        bBorrar.setBounds(253, 22, 95, 40);
-        bBorrar.setActionCommand("borrarTexto");
-
-        bSalir = new JButton("Salir");
-        bSalir.setFont(new Font("Arial", Font.PLAIN, 14));
-        bSalir.setForeground(Color.BLACK);
-        bSalir.setBackground(Color.WHITE);
-        bSalir.setBorder(BorderFactory.createRaisedBevelBorder());
-        bSalir.setBounds(370, 22, 95, 40);
-        bSalir.setActionCommand("cerrarVentana");
-
+    //Constructor
+    public PanelOperaciones()
+    {
+        //Definición del contenedor del panel
         this.setLayout(null);
-        this.setBackground(Color.decode("#0037FF"));
-        this.setVisible(true);
-        this.add(bAgregar);
-        this.add(bCalcular);
-        this.add(bBorrar);
-        this.add(bSalir);
+        this.setBackground(Color.WHITE);
+
+        //Crear y agregar boton AgregarVendedor
+        btAgregarVendedor = new JButton("Agregar Vendedor");
+        btAgregarVendedor.setBounds(10,20,170,20);
+        btAgregarVendedor.setActionCommand("agregarVendedor");
+        this.add(btAgregarVendedor);
+
+        //Crear y agregar boton VenderCarro
+        btVenderCarro = new JButton("Vender Carro");
+        btVenderCarro.setBounds(10,50,170,20); 
+        btVenderCarro.setActionCommand("venderCarro");
+        this.add(btVenderCarro);
+
+        //Crear y agregar boton CalcularSueldo
+        btCalcularSueldo = new JButton("Calcular Sueldo");
+        btCalcularSueldo.setBounds(10,80,170,20);
+        btCalcularSueldo.setActionCommand("calcularSueldo");
+        this.add(btCalcularSueldo);
+
+        //Crear y agregar boton LiquidarNomina
+        btLiquidarNomina = new JButton("Liquidar Nómina");
+        btLiquidarNomina.setBounds(190,20,170,20); 
+        btLiquidarNomina.setActionCommand("liquidarNomina");
+        this.add(btLiquidarNomina);
+
+        //Crear y agregar boton Salir
+        btSalir = new JButton("Salir");
+        btSalir.setBounds(190,50,170,20); 
+        btSalir.setActionCommand("salir");
+        this.add(btSalir);
+
+        //Borde y titulo del panel
+        TitledBorder borde = BorderFactory.createTitledBorder("Operaciones");
+        borde.setTitleColor(Color.BLUE);
+        this.setBorder(borde);
     }
+
+    public void agregarOyentesBotones(ActionListener pAL)
+    {
+        btAgregarVendedor.addActionListener(pAL);
+        btVenderCarro.addActionListener(pAL);
+        btCalcularSueldo.addActionListener(pAL);
+        btLiquidarNomina.addActionListener(pAL);
+        btSalir.addActionListener(pAL);
+    }
+
+
 }

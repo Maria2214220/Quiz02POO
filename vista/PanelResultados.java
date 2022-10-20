@@ -1,38 +1,47 @@
 package vista;
 
+import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
-public class PanelResultados extends JPanel {
-    public static JTextArea taResultados;
-    public static JScrollPane spResultados;
+public class PanelResultados extends JPanel
+{
+    //----------------------
+    // Atributos
+    //----------------------
+    private JTextArea taResultado;
+    private JScrollPane spResultado;
 
-    public PanelResultados() {
-        taResultados = new JTextArea();
-        taResultados.setFont(new Font("Consolas", Font.PLAIN, 16));
-        taResultados.setForeground(Color.BLACK);
-        taResultados.setBorder(BorderFactory.createLoweredBevelBorder());
-        taResultados.setEditable(false);
-        taResultados.setBounds(9, 15, 460, 80);
+    //----------------------
+    // Metodos
+    //----------------------
 
-        spResultados = new JScrollPane(taResultados);
-        spResultados.setBounds(9, 15, 460, 80);
-
+    //Constructor
+    public PanelResultados()
+    {
+        //Definición del contenedor del panel
         this.setLayout(null);
-        this.setBackground(Color.decode("#FF0000"));
-        this.setVisible(true);
-        this.add(spResultados);
+        this.setBackground(Color.WHITE);
+
+        //Crear y agregar area de texto Resultados
+        taResultado = new JTextArea();
+        spResultado = new JScrollPane(taResultado);
+        spResultado.setBounds(10,20,360,150);
+        this.add(spResultado);
+
+        //Borde y titulo del panel
+        TitledBorder borde = BorderFactory.createTitledBorder("Operaciones");
+        borde.setTitleColor(Color.BLUE);
+        this.setBorder(borde);
     }
 
-    public static void mostrarResultados(String texto) {
-        taResultados.append(texto);
-    }
-
-    public void borrarTa() {
-        taResultados.setText("");
+    //Metodos de acceso
+    public void mostrarResultado(String msj)
+    {
+        //taResultado.append(msj + "\n");
+        taResultado.setText(msj);
     }
 }
